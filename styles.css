@@ -1,0 +1,203 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* BACKGROUND */
+body {
+  background: url('./monbdrPIC/back.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #0b1a2a; /* 🔵 bluish base */
+  color: white;
+}
+
+/* DARK BLUE OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ================= HEADER ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 15px 20px;
+
+  background: linear-gradient(90deg, #0a2a55, #0d3c78);
+  backdrop-filter: blur(10px);
+}
+
+/* HAMBURGER LEFT */
+.menu-toggle {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  display: none;
+}
+
+/* TITLE (BIG + ALL CAPS) */
+.title {
+  flex: 1;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* LOGO RIGHT */
+.logo img {
+  height: 75px;
+}
+
+/* ================= DASHBOARD ================= */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+/* CARDS */
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px;
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: rgba(0,200,255,0.25);
+  box-shadow: 0 0 18px #00eaff;
+}
+
+/* ================= MOBILE CENTER BUTTON ================= */
+.mobile-center {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.start-btn {
+  padding: 15px 30px;
+  background: #00eaff;
+  color: black;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.close-btn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+/* ================= TABLE ================= */
+.table-container {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.1);
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-align: center;
+}
+
+th {
+  background: rgba(0,160,255,0.4);
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #00eaff;
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* SHOW HAMBURGER LEFT */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* SMALLER TITLE */
+  .title {
+    font-size: 18px;
+  }
+
+  /* LOGO RIGHT SMALLER */
+  .logo img {
+    height: 60px;
+  }
+
+  /* FULL SCREEN MENU */
+  .dashboard {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,25,60,0.95);
+    padding: 80px 20px;
+    z-index: 10;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .dashboard.show {
+    display: grid;
+  }
+
+  /* CLOSE BUTTON */
+  .dashboard.show .close-btn {
+    display: block;
+  }
+
+  /* GET STARTED ONLY MOBILE */
+  .mobile-center {
+    display: flex;
+  }
+
+  .mobile-center.hide {
+    display: none;
+  }
+}
